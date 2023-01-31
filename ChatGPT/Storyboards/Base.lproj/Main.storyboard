@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,10 +24,51 @@
                                 <color key="tintColor" red="0.0" green="0.82495653629302979" blue="0.21498933434486389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-qI-mNr">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4V-AV-xy0">
+                                        <rect key="frame" x="337" y="67" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="0om-Fp-wOE"/>
+                                            <constraint firstAttribute="height" constant="48" id="erZ-yj-A29"/>
+                                        </constraints>
+                                        <color key="tintColor" name="label"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="filemenu.and.cursorarrow" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
+                                        </state>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-HR-6xt">
+                                        <rect key="frame" x="14" y="67" width="52" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="S2i-4x-bEC"/>
+                                            <constraint firstAttribute="height" constant="52" id="eY6-WR-TYC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat GPT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ud-Jk-YfC">
+                                        <rect key="frame" x="74" y="67" width="80" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQf-m6-6kk">
+                                        <rect key="frame" x="74" y="91" width="47" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" name="label"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="RS2-B4-yNj"/>
+                                    <constraint firstAttribute="bottom" secondItem="kQf-m6-6kk" secondAttribute="bottom" constant="8" id="0ED-8b-lhY"/>
+                                    <constraint firstItem="kQf-m6-6kk" firstAttribute="top" secondItem="7ud-Jk-YfC" secondAttribute="bottom" constant="2" id="5g0-Lp-tTa"/>
+                                    <constraint firstItem="qz8-HR-6xt" firstAttribute="leading" secondItem="Myd-qI-mNr" secondAttribute="leading" constant="14" id="GhY-Kw-fmm"/>
+                                    <constraint firstAttribute="bottom" secondItem="b4V-AV-xy0" secondAttribute="bottom" constant="4" id="MEf-4j-OEf"/>
+                                    <constraint firstAttribute="height" constant="119" id="RS2-B4-yNj"/>
+                                    <constraint firstItem="kQf-m6-6kk" firstAttribute="leading" secondItem="qz8-HR-6xt" secondAttribute="trailing" constant="8" symbolic="YES" id="hgG-zq-Low"/>
+                                    <constraint firstItem="7ud-Jk-YfC" firstAttribute="leading" secondItem="qz8-HR-6xt" secondAttribute="trailing" constant="8" symbolic="YES" id="jZB-Fc-C1O"/>
+                                    <constraint firstAttribute="bottom" secondItem="qz8-HR-6xt" secondAttribute="bottom" id="ozr-WF-Rhb"/>
+                                    <constraint firstAttribute="trailing" secondItem="b4V-AV-xy0" secondAttribute="trailing" constant="8" id="pdx-ab-kND"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -37,7 +79,7 @@
                             <constraint firstItem="PqC-YD-WL4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="NYU-d7-TeM"/>
                             <constraint firstItem="PqC-YD-WL4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QzY-qX-Qm2"/>
                             <constraint firstItem="Myd-qI-mNr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RSq-4g-weM"/>
-                            <constraint firstItem="Myd-qI-mNr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YW9-Gp-7S1"/>
+                            <constraint firstItem="Myd-qI-mNr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-59" id="YW9-Gp-7S1"/>
                             <constraint firstItem="PqC-YD-WL4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bkJ-1a-jiA"/>
                             <constraint firstItem="PqC-YD-WL4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kpg-sj-ksR"/>
                         </constraints>
@@ -53,6 +95,11 @@
     </scenes>
     <resources>
         <image name="chat_bg" width="750" height="1101"/>
+        <image name="filemenu.and.cursorarrow" catalog="system" width="128" height="97"/>
+        <image name="profile" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="label">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -11,7 +11,8 @@ import MessageKit
 
 open class CustomChatCell: UICollectionViewCell {
     
-    let label = UILabel()
+    //let label = UILabel()
+    let label = UITextView()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

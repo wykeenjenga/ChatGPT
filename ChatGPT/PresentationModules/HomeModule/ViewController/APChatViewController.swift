@@ -69,7 +69,7 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
         super.viewDidLayoutSubviews()
         let gradient = CAGradientLayer()
         gradient.frame = navBarView.bounds
-        gradient.colors = [UIColor(red: 0.40, green: 0.25, blue: 0.42, alpha: 1.00).cgColor,UIColor(red: 0.09, green: 0.22, blue: 0.36, alpha: 1.00).cgColor]
+        gradient.colors = [UIColor(named: "yellow")!.cgColor,UIColor(named: "yellowFade")!.cgColor]
         navBarView.layer.insertSublayer(gradient, at: 0)
         self.view.bringSubviewToFront(navBarView)
         messagesCollectionView.contentInset = UIEdgeInsets(top: navBarView.bounds.size.height, left: 0, bottom: messageInputBar.frame.height + 8, right: 0)
@@ -88,14 +88,16 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
                 let data = try? JSONDecoder().decode(APGPTModel.self, from: jsonData)
 
                 let results = data?.choices[0].text
+                let data_renspose = results!.replacingOccurrences(of: "\n\n", with: "")
                 
                 let date = Date()
                 
-                let msg = Message(id: UUID().uuidString, username: "OpenAI", message: results!, isUser: false, created: date)
+                let msg = Message(id: UUID().uuidString, username: "OpenAI (Chat bot)", message: data_renspose, isUser: false, created: date)
                 
                 self.messageList.append(msg)
                 
                 self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom(animated: self.isFirstSetLoaded)
             }
 
         }
@@ -145,12 +147,45 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
     
     func configureMessageInputBar() {
         messageInputBar.delegate = self
-        messageInputBar.inputTextView.tintColor = .blue
-        messageInputBar.sendButton.setTitleColor(.blue, for: .normal)
+        messageInputBar.inputTextView.tintColor = UIColor(named: "yellow")
+        messageInputBar.sendButton.setTitleColor(UIColor(named: "yellow"), for: .normal)
         messageInputBar.sendButton.setTitleColor(
             UIColor.orange.withAlphaComponent(0.3),
             for: .highlighted
         )
+        messageInputBar.inputTextView.layer.borderColor = UIColor(named: "yellow")?.cgColor
+        messageInputBar.inputTextView.layer.borderWidth = 1.0
+        messageInputBar.inputTextView.layer.cornerRadius = 12
+        messageInputBar.sendButton.title = ""
+        messageInputBar.sendButton.image = UIImage(systemName: "paperplane")
+        messageInputBar.sendButton.setTitleColor(.brown, for: .normal)
+        messageInputBar.sendButton.setTitleColor(.brown.withAlphaComponent(1.0), for: .highlighted)
+        messageInputBar.backgroundView.backgroundColor = .white
+        
+        let image = UIImage(systemName: "mic.fill")!
+        let addButton = InputBarButtonItem(frame: CGRect(origin: .zero, size: CGSize(width: image.size.width, height: image.size.height)))
+        addButton.image = image
+        addButton.imageView?.contentMode = .scaleAspectFit
+
+        messageInputBar.setStackViewItems([addButton], forStack: .left, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+
+        messageInputBar.leftStackView.alignment = .center //HERE
+    }
+    
+    func initMessageBarItems() {
+        let image = UIImage(systemName: "mic.fill")!
+        let addButton = InputBarButtonItem(frame: CGRect(origin: .zero, size: CGSize(width: image.size.width, height: image.size.height)))
+        addButton.image = image
+        addButton.imageView?.contentMode = .scaleAspectFit
+
+        messageInputBar.setStackViewItems([addButton], forStack: .left, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+
+        messageInputBar.leftStackView.alignment = .center //HERE
+        
+        //addButton.addTarget(self, action: #selector(openActionSheet), for: .touchUpInside)
+        reloadInputViews()
     }
     
     func getResponse(with text: String, completion: @escaping(JSON?, Error?) -> Void){
@@ -214,7 +249,7 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
    }
     
     func currentSender() -> SenderType {
-        return MessageUser(senderId: "0000", displayName: "Wykee")
+        return MessageUser(senderId: "0000", displayName: "Wycliff")
     }
 
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -223,6 +258,16 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
     
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
         return messageList.count
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+    }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let name = message.sender.displayName
+        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        return nil
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -275,7 +320,7 @@ extension APChatViewController: InputBarAccessoryViewDelegate {
             sleep(1)
             DispatchQueue.main.async { [weak self] in
                 inputBar.sendButton.stopAnimating()
-                inputBar.inputTextView.placeholder = "Aa"
+                inputBar.inputTextView.placeholder = "Ask anything..."
                 self?.insertMessages(components)
                 self?.messagesCollectionView.scrollToBottom(animated: true)
             }
@@ -286,7 +331,7 @@ extension APChatViewController: InputBarAccessoryViewDelegate {
         for component in data {
             if let str = component as? String {
                 let currentDate = Date()
-                let message = Message(id: UUID().uuidString, username: "Wykee", message: str, isUser: true, created: currentDate)
+                let message = Message(id: "0000", username: "Wycliff", message: str, isUser: true, created: currentDate)
                 insertNewMessage(message)
                 //save(message)
             }
@@ -318,7 +363,7 @@ extension APChatViewController: MessagesDisplayDelegate {
     // MARK: - All Messages
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .blue : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        return isFromCurrentSender(message: message) ? UIColor(named: "header")! : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -349,6 +394,13 @@ extension APChatViewController: MessagesDisplayDelegate {
 extension APChatViewController: MessagesLayoutDelegate {
   
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if indexPath.section >= 1 {
+            let lastMessage = messageList[indexPath.section - 1]
+            
+            if lastMessage.created.isInSameDayOf(date: message.sentDate) {
+                return 0
+            }
+        }
         return 18
     }
     
