@@ -1,0 +1,6 @@
+framework module Pods_ChatGPTTests {
+  umbrella header "Pods-ChatGPTTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

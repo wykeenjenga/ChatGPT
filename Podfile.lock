@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (5.6.2)
+  - InputBarAccessoryView (5.5.0):
+    - InputBarAccessoryView/Core (= 5.5.0)
+  - InputBarAccessoryView/Core (5.5.0)
+  - IQKeyboardManagerSwift (6.5.10)
+  - JGProgressHUD (2.2)
+  - Kingfisher (7.4.1)
+  - MessageKit (3.8.0):
+    - InputBarAccessoryView (~> 5.5.0)
+  - SwiftyContextMenu (0.1.5)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - JGProgressHUD
+  - Kingfisher
+  - MessageKit
+  - SwiftyContextMenu
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - InputBarAccessoryView
+    - IQKeyboardManagerSwift
+    - JGProgressHUD
+    - Kingfisher
+    - MessageKit
+    - SwiftyContextMenu
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
+  SwiftyContextMenu: 3cd07fded2bea2e73a98a5b734375dce278d4399
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: bebc73717166e3d05f9f971e325439a09eb7a444
+
+COCOAPODS: 1.11.3
