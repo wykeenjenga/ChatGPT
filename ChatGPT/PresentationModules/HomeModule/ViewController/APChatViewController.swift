@@ -190,7 +190,7 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
     
     func getResponse(with text: String, completion: @escaping(JSON?, Error?) -> Void){
 
-        let url =  "http://45.61.56.80/api/chatGPT"
+        let url =  "ENTER YOUR API HERE"
         let parameters = ["prompt": text] as [String : Any]
         
         DispatchQueue.main.async {
