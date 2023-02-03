@@ -380,9 +380,6 @@ extension APChatViewController: MessagesDisplayDelegate {
 //        } else if case MessageKind.photo(let media) = message.kind, let imageURL = media.url, displayImage {
 //            imageView.image = createImagePlaceholder(isImageHidden: true)
 //            imageView.setImage(with: imageURL.absoluteString)
-//        } else if case MessageKind.photo(let media) = message.kind, let image = media.image, displayImage {
-//            imageView.image = image
-//        }
     }
 }
 
