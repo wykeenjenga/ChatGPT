@@ -372,9 +372,6 @@ extension APChatViewController: MessagesDisplayDelegate {
     }
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        
-//        let displayImage = isFromCurrentSender(message: message)
-//        imageView.image = messageList[indexPath.section].image
     }
 }
 
