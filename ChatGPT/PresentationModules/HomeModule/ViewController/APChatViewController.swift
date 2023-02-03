@@ -182,9 +182,8 @@ class APChatViewController: MessagesViewController, MessagesDataSource{
         messageInputBar.setStackViewItems([addButton], forStack: .left, animated: false)
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
 
-        messageInputBar.leftStackView.alignment = .center //HERE
+        messageInputBar.leftStackView.alignment = .center
         
-        //addButton.addTarget(self, action: #selector(openActionSheet), for: .touchUpInside)
         reloadInputViews()
     }
     
