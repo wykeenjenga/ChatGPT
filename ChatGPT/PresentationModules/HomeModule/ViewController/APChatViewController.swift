@@ -375,8 +375,6 @@ extension APChatViewController: MessagesDisplayDelegate {
         
 //        let displayImage = isFromCurrentSender(message: message)
 //        imageView.image = messageList[indexPath.section].image
-//        if let photoLibraryURL = messageList[indexPath.section].photoLibraryURL, let image = getImageFromPhotoLib(imageUrl: photoLibraryURL) {
-//            imageView.image = image
     }
 }
 
