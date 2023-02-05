@@ -1,9 +1,8 @@
 //
 //  CustomChatCell.swift
-//  Postagic
+//  ChatGPT
 //
-//  Created by Ayush Sharma on 15/09/20.
-//  Copyright © 2020 Postagic. All rights reserved.
+//  Created by Wykee on 29/01/2023.
 //
 
 import Foundation

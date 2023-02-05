@@ -381,7 +381,7 @@ extension APChatViewController: MessagesDisplayDelegate {
 
 extension APChatViewController: MessagesLayoutDelegate {
   
-    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionxsView) -> CGFloat {
         if indexPath.section >= 1 {
             let lastMessage = messageList[indexPath.section - 1]
             
